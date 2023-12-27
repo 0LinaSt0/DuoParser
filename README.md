@@ -1,5 +1,7 @@
 
-WHAT I NEED TO PARS:
+<!-- C:/Users/hristoforova/AppData/Local/Google/Chrome/User\ Data -->
+
+<!-- WHAT I NEED TO PARS:
 
 1. INFORMATION
 
@@ -21,10 +23,11 @@ v
 
 2. PRESS SHOW MORE BUTTON [OPTIONAL]
 <div class="_2i_uN"> -> <div> -> <button class="_34v50 _275sd _1ZefG kRgiM">
+-> <span class="_13HXc">
 
 3. TAKE WORDS
 <div class="_2i_uN"> -> <div> -> <div class="_3ewMG"> -> <div class="usJBg _1dAI3">
--> <div class="_3D4G0"> -> <p class="_2EAoP _2HH61">WORDS </p>
+-> <div class="_3D4G0"> -> <p class="_2EAoP _2HH61">WORDS </p> -->
 
 
 
@@ -62,12 +65,15 @@ v
 > Copy path to User Data directory from `chrome://version/` page. It will looks like:
 > `C:\Users\{username}\AppData\Local\Google\Chrome\User Data`
 1. Log in to your ["Duolingo for school"](https://schools.duolingo.com/login) account in the Google Chrome browser (GCb)
+1. Define number of your class
+> You can take it from start url:
+> `https://schools.duolingo.com/classroom/{class_id}/students`
 1. Close all GCb instances and make sure that all background instances of GCb have been closed
 1. Create virtualenv and install all the packages from requirements.txt
 
 #### Running
 ``` bash
-$ python duoscraper.py {path_to_User_Data}
+$ python duoscraper.py {path_to_User_Data} {class_id}
 ```
 
 ## Credits
