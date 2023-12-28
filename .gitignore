@@ -1,6 +1,9 @@
 **/**tmp**
 **/**cache**
-**/*.json
 **/.*
 
+data/*
+data/*/*
+
+!data/*/
 !**/.git*

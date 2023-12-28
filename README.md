@@ -62,18 +62,28 @@ v
 #### Preparation steps
 
 1. Define path to path to the default chrome profile
-> Copy path to User Data directory from `chrome://version/` page. It will looks like:
-> `C:\Users\{username}\AppData\Local\Google\Chrome\User Data`
+    > Copy path to User Data directory from `chrome://version/` page. It will looks like:
+    > `C:\Users\{username}\AppData\Local\Google\Chrome\User Data`
 1. Log in to your ["Duolingo for school"](https://schools.duolingo.com/login) account in the Google Chrome browser (GCb)
 1. Define number of your class
-> You can take it from start url:
-> `https://schools.duolingo.com/classroom/{class_id}/students`
+    > You can take it from start url:
+    > `https://schools.duolingo.com/classroom/{class_id}/students`
+1. Define your Main Unit [optional]
+    > If you want to see words which you already have learned, you should define your actual main unit. For that, you could plus count of all completed unit in every completed sections. Check it in your Duolingo account. For example:
+    >> If I'm on Section 4 Unit 2, I should plus count of all Units in all three Sections before and plus one unit from Section 4
+    > ```bash
+    > Section 1 has 5 Units
+    > Section 2 has 15 Units
+    > Section 3 has 16 Units
+    > Completed 1 extra Unit from Section 4
+    > 5 + 15 + 16 + 1 => Number of my Main Unit is 37
+    > ```
 1. Close all GCb instances and make sure that all background instances of GCb have been closed
 1. Create virtualenv and install all the packages from requirements.txt
 
 #### Running
 ``` bash
-$ python duoscraper.py {path_to_User_Data} {class_id}
+$ python duoscraper.py -d C:/Users/hristoforova/AppData/Local/Google/Chrome/User\ Data -i 6731731 -n -u[optional] 37 -l[optional] A2
 ```
 
 ## Credits
