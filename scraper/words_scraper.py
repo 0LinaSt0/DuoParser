@@ -56,7 +56,7 @@ class WordsScraper(ChromeScraper):
             words = SortedSet()
 
             for key, value in self.words.items():
-                if key > n_unit:
+                if int(key) > n_unit:
                     break
                 words.update(value[2])
 
@@ -84,11 +84,11 @@ class WordsScraper(ChromeScraper):
         if len(level_name) == 0:
             return
 
-        by_level = f'_words_by_unit_{level_name}.json'
+        by_level = f'_words_by_level_{level_name}.json'
 
         words = SortedSet()
 
-        for unit in self.words.values:
+        for unit in self.words.values():
             if unit[0] == level_name:
                 words.update(unit[2])
 
@@ -140,6 +140,9 @@ class WordsScraper(ChromeScraper):
                 By.CSS_SELECTOR,
                 ELEMENT['U_HEADER']
             ).text.split('\n')
+
+        # BETTER WAY TO USE IT INSTEAD OF [id]
+        # u = unit_header.find_element(By.XPATH, "//*[contains(text(), 'Unit')]").split()
 
         n_unit = int(unit_header[0].split()[1])
         level = unit_header[2]

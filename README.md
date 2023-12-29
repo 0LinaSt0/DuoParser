@@ -81,9 +81,12 @@ v
 1. Close all GCb instances and make sure that all background instances of GCb have been closed
 1. Create virtualenv and install all the packages from requirements.txt
 
+[!ATTENTION]
+It works just with classes who have 'Language your students speak: English' in settings
+
 #### Running
 ``` bash
-$ python duoscraper.py -d C:/Users/hristoforova/AppData/Local/Google/Chrome/User\ Data -i 6731731 -n -u[optional] 37 -l[optional] A2
+$ python duoscraper.py -d C:/Users/hristoforova/AppData/Local/Google/Chrome/User\ Data -i 6731731 -n[optional] custom_attach -u[optional] 37 -l[optional] A2
 ```
 
 ## Credits
