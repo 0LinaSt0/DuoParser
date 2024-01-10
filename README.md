@@ -1,7 +1,4 @@
-
-<!-- C:/Users/hristoforova/AppData/Local/Google/Chrome/User\ Data -->
-
-<!-- WHAT I NEED TO PARS:
+<!-- PARS MAP:
 
 1. INFORMATION
 
@@ -30,44 +27,44 @@ v
 -> <div class="_3D4G0"> -> <p class="_2EAoP _2HH61">WORDS </p> -->
 
 
+# DuoParser
 
-----------------------------------------
-
-# <Your-Project-Title>
+> **Attention:**
+Unfortunately, the Duolingo for School service doesn't support "Assign" page with course's words anymore.
 
 ## Description
 
-***FILL ME UP***
+For the best studying of new language it's important to understand your real lexicon (active and passive words). The parser can help with it. It parses Duolingo for School service and create json file with all learning words which are included to your language course.
 
-> Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
->
-> - What was your motivation?
-> - Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-> - What problem does it solve?
-> - What did you learn?
+
+It creates:
+- json file with all words
+- json file with words which are learned personally (by passed unit)
+- json file with words by concrete language level
+
 
 ## Table of Contents
 
 - [Dependencies](#dependencies)
 - [Usage](#usage)
-- [Credits](#credits)
-- [License](#license)
+- [Features](#features)
 
 ## Dependencies
 
+- You have to have an account in Duolingo for School service
 - It uses Google Chrome browser for web scraping
 
 ## Usage
 
 #### Preparation steps
 
-1. Define path to path to the default chrome profile
-    > Copy path to User Data directory from `chrome://version/` page. It will looks like:
-    > `C:\Users\{username}\AppData\Local\Google\Chrome\User Data`
+1. Define path to the default chrome profile
+    > Copy path to User Data directory from `chrome://version/` page. It looks like:
+    `C:\Users\{username}\AppData\Local\Google\Chrome\User Data`
 1. Log in to your ["Duolingo for school"](https://schools.duolingo.com/login) account in the Google Chrome browser (GCb)
 1. Define number of your class
     > You can take it from start url:
-    > `https://schools.duolingo.com/classroom/{class_id}/students`
+    `https://schools.duolingo.com/classroom/{class_id}/students`
 1. Define your Main Unit [optional]
     > If you want to see words which you already have learned, you should define your actual main unit. For that, you could plus count of all completed unit in every completed sections. Check it in your Duolingo account. For example:
     >> If I'm on Section 4 Unit 2, I should plus count of all Units in all three Sections before and plus one unit from Section 4
@@ -81,56 +78,108 @@ v
 1. Close all GCb instances and make sure that all background instances of GCb have been closed
 1. Create virtualenv and install all the packages from requirements.txt
 
-[!ATTENTION]
+> **Note:**
 It works just with classes who have 'Language your students speak: English' in settings
 
 #### Running
 ``` bash
-$ python duoscraper.py -d C:/Users/hristoforova/AppData/Local/Google/Chrome/User\ Data -i 6731731 -n[optional] custom_attach -u[optional] 37 -l[optional] A2
+$ python duoparser.py -d {path_to_User_Data_directory} -i {class_id} -n[optional] {custom_attach} -u[optional] {number_of_union} -l[optional] {name_of_level}
 ```
-
-## Credits
-
-***FILL ME UP***
-
-> List your collaborators, if any, with links to their GitHub profiles.
->
-> If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
->
-> If you followed tutorials, include links to those here as well.
-
-## License
-
-***FILL ME UP***
-
-> The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
-
----
-
-🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
-
-## Badges
-
-***FILL ME UP***
-
-> ![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
->
-> Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
 
 ## Features
 
-***FILL ME UP***
+<table>
+<tr>
+    <th>Argument</th>
+    <th>About</th>
+    <th>Example</th>
+    <th>Optional</th>
+</tr>
+<tr>
+<td>
 
-> If your project has a lot of features, list them here.
+```bash
+-d
+--user_data_dir
+```
 
-## How to Contribute
+</td>
+<td>The path to default home profile</td>
+<td style="max-width: 300px;">
 
-***FILL ME UP***
+```bash
+C:/Users/{username}/AppData/Local/Google/Chrome/User\ Data
+```
 
-> If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
+</td>
+<td>No</td>
+</tr>
+<tr>
+<td>
 
-## Tests
+```bash
+-i
+--class_id
+```
 
-***FILL ME UP***
+</td>
+<td>Id number of class on Duolingo for school service</td>
+<td>6731731</td>
+<td>No</td>
+</tr>
+<tr>
+<td>
 
-> Go the extra mile and write tests for your application. Then provide examples on how to run them here.
+```bash
+-n
+--attachment_name
+```
+
+</td>
+<td>
+Attachment for name of output files.<br>
+If this argument is defined the name of the files will be
+started with attachment else it will be started with class id.
+</td>
+<td>my_attachment</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>
+
+```bash
+-u
+--main_union_number
+```
+
+</td>
+<td>
+Number of main interested unit.<br>
+If this argument is defined the parser creates
+"*_words_by_unit_{unit_number}.json" file with
+list of all learned unique words before and
+includes unit else the file isn't created.
+</td>
+<td>37</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>
+
+```bash
+-l
+--level_name
+```
+
+</td>
+<td>
+Name of interested level.<br>
+If this argument is defined the parser creates
+"*_words_by_level_{level_name}.json" file with
+list of all unique words before and includes level
+else the file isn't created.
+</td>
+<td>A2</td>
+<td>Yes</td>
+</tr>
+</table>

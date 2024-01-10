@@ -66,7 +66,7 @@ def get_arguments() -> Tuple[str, str, str, str]:
         ),
         (
             ('-i', '--class_id'),
-            {**mandatory_confs, 'help': 'Id number of class on Duolingo for school platform'}
+            {**mandatory_confs, 'help': 'Id number of class on Duolingo for school service'}
         ),
         (
             ('-n', '--attachment_name'),
